@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+  <h2>Content:</h2>
+  {{ file_text }}
+  <form action="{{ url_for('download') }}" method="POST">
+    <input type="hidden" name="key" value="{{ key }}">
+    <button type="submit">
+      Download
+    </button>
+  <h2>Update file</h2>
+  </form>
+  <form action="{{ url_for('update') }}" method="post" enctype="multipart/form-data">
+    <p><input type="file" name="file"></p>
+    <p><input type="hidden" name="key" value="{{ key }}"></p>
+    <button type="submit" name="submit">Update</button>
+  </form>
+{% endblock %}

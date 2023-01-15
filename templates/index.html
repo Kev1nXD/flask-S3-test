@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+  <form action="{{ url_for('get_file') }}" method="post">
+    <label>
+      <input type="text" name="key" placeholder="input key">
+    </label>
+    <button type="submit">
+      Submit
+    </button>
+  </form>
+  <h2>Upload new files</h2>
+  <form action="/upload" method="post" enctype="multipart/form-data">
+    <p><input type="file" name="file"></p>
+    <button type="submit" name="submit">Upload</button>
+  </form>
+  <h2>Available files:</h2>
+  {% for file in files %}
+    {{ file.key }}<br>
+  {% endfor %}
+{% endblock %}
